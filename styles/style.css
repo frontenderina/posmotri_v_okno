@@ -9,13 +9,16 @@ html {
 }
 
 .page {
-  inline-size: 1200px;
-  block-size: 100%;
+  /* мой код */
+  display: flex;
+  align-items: center;
   margin: auto;
-  color: #fff;
+  color: #FFF;
   font-family: 'Fira Sans Condensed', sans-serif;
   font-size: 18px;
   background-color: #1b1919;
+  inline-size: 1200px;
+  block-size: 100%;
 }
 
 h1,
@@ -35,4 +38,337 @@ fieldset {
 ul,
 ol {
   list-style: none;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  width: 1140px;
+  margin: 0 auto;
+}
+
+/* секция большое видео, формы Город,
+Время суток и кнопка Найти */
+.result {
+  width: 711px;
+  min-height: 386px;
+}
+
+/* блок с большим экраном видео */
+.result__video-container {
+  position: relative;
+  width: 711px;
+  height: 386px;
+}
+
+/* сам большой экран видео */
+.result__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* формы Город, Время суток и кнопка Найти */
+.search-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  padding-top: 13px;
+}
+
+/* формы Город и Время суток */
+.search-form__fieldset {
+  border: none;
+}
+
+/* подзаголовки h2 форм Город, Время суток */
+.search-form__fieldset-title {
+  color: #FFF;
+  font-family: Fira Sans Condensed, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  font-style: normal;
+  line-height: 2;
+}
+
+/* лейбл полей Город, Утро, День, Ночь
+! текстовые стили label не наследуются (цвет, шрифт и т.д.) */
+.search-form__label {
+  width: fit-content;
+  color: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  line-height: inherit;
+}
+
+/* подчёркивание текста у чекбокса при наведении 
+курсора на лейбл */
+.search-form__label:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* span Утро, День, Ночь */
+.search-form__label-text {
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+}
+
+/* сброс настроек для input-полей ввода форм 
+Город и Время суток */
+.visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  inline-size: 1px;
+  block-size: 1px;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* input-поле ввода формы Город (Санк-Петербург, например) 
+! текстовые стили input не наследуются (цвет, шрифт и т.д.)*/
+.search-form__textfield {
+  min-width: 225px;
+  border-top: 1px solid #FFF;
+  border-right: 0;
+  border-bottom: 1px solid #FFF;
+  border-left: 0;
+  padding-right: 0;
+  padding-left: 0;
+  color: inherit;
+  font-family: Fira Sans Condensed, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  font-style: normal;
+  line-height: normal;
+  background-color: inherit;
+  appearance: none;  /* для сброса системных стилей */
+}
+
+.search-form__textfield::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+  font-family: inherit;
+}
+
+/* input-поле ввода формы Город 
+(Санк-Петербург, например)в фокусе, при клике мышкой */
+.search-form__textfield:focus {
+  outline: none;
+}
+
+/* input само поле ввода формы Город 
+(Санк-Петербург, например) только при tab-клике */
+.search-form__label:has(:focus-visible) {
+  outline: 1px solid #FFF;
+  outline-offset: 2px;
+} 
+
+/* input само поле ввода формы Город 
+(Санк-Петербург, например) в активном состоянии */
+.search-form__textfield:active {
+  border: 1px solid #FFF;
+}
+
+/* ЧЕК-БОКС ФОРМА ВРЕМЯ СУТОК */
+.search-form__checkbox-list {
+  display: flex;
+  justify-content: space-between;
+  min-width: 212px;
+}
+
+/* span Утро, День, Ночь */
+.search-form__pseudo-checkbox {
+  position: relative;
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  border: 1px solid #FFF;
+}
+
+/* при клике в чекбоксе Утро, День, Ночь 
+появляется маркер в выбранном квадрате */
+.search-form__checkbox:checked + .search-form__pseudo-checkbox {
+  background-image: url(/images/checked.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+
+/* кнопки Найти и Показать ещё */
+.button {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #FFF;
+  color: #FFF;
+  font-family: Fira Sans Condensed, sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  font-style: normal;
+  line-height: 1.5;
+  text-align: center;
+  background-color: inherit;
+  cursor: pointer;
+}
+
+.button:hover {
+  border: 1px solid #FFF;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.button:focus {
+  outline: none;
+}
+
+/* кнопки Найти и Показать больше
+только при tab-клике */
+.button:focus-visible {
+  outline: 1px solid #FFF;
+  outline-offset: 2px;
+} 
+
+.button:active {
+  background: #545050;
+}
+
+/* только для кнопки Найти */
+.search-form__submit-button {
+  width: 194px;
+}
+
+/* СЕКЦИЯ ПОСМОТРИ В ОКНО */
+.content__details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 534px;
+}
+
+/* заголовок h1 По- смотри в окно */
+.title {
+  min-width: 260px;
+  padding-bottom: 26px;
+  padding-left: 30px;
+  font-family: Oswald, sans-serif;
+  font-weight: 700;
+  font-size: 75px;
+  font-style: normal;
+  line-height: 94%;
+  text-transform: uppercase;
+}
+
+/* span-акцент заголовока По- смотри в окно */
+.content__accent {
+  color: #545050;
+}
+
+/* контейнер для темплейтов карточек */
+.content__list {
+  position: relative;
+  min-height: 236px;
+  padding-left: 30px;  
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* ТЕМПЛЕЙТЫ */
+.preloader-template {
+  position: absolute;
+}
+
+/* ячейка карточки в фокусе */
+.content__list-item:focus {
+  outline: none;
+}
+
+/* ячейка карточки только при tab-клике */
+.content__list-item:focus-visible {
+  margin: 2px 2px 2px 2px;
+  outline: 1px solid #FFF;
+  outline-offset: 2px;
+}
+
+/* ячейка карточки при наведении курсора */
+.content__list-item:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ячейка в момент клика-активации */
+.content__list-item:active {
+  background: #545050;
+}
+
+/* убрала нижний отступ у последней 
+карточки в списке */
+.content__list-item:last-child {
+  margin-bottom: -30px;
+}
+
+/* ссылка карточки */
+.content__card-link {
+  display: block;
+  color: #FFF;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* секция видео-карточка */
+.content__video-card {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 30px;
+}
+
+/* описание видео-карточки */
+.content__video-card-description-container {
+  padding: 0 2px 0 2px;
+}
+
+/* подзаголовок h2 видео-карточки */
+.content__video-card-title {
+  width: 200px;
+  padding-top: 5px;
+  color: #FFF;
+  font-family: Oswald, sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  font-style: normal;
+  line-height: 100%;
+  text-transform: uppercase;
+}
+
+/* текст p описания видео-карточки*/
+.content__video-card-description {
+  width: 200px;
+  padding-top: 5px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 16.2px;
+}
+
+/* картинка видео-карточки */
+.content__video-card-thumbnail {
+  width: 194px;
+}
+
+/* активная карточка выделена фоном */
+.content__card-link_current {
+  background: #545050;
+}
+
+/* кнопка Показать ещё */
+.more-button {
+  width: 399px;
 }

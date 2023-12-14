@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./styles/preloader.css" />
     <link rel="stylesheet" href="./styles/error.css" />
   </head>
+  <!-- большой экран видео -->
   <body class="page">
     <main class="content">
       <section class="result">
@@ -17,6 +18,7 @@
           <video src="" controls class="result__video" poster=""></video>
         </div>
         <form class="search-form">
+          <!-- форма "Город" -->
           <fieldset class="search-form__fieldset">
             <h2 class="search-form__fieldset-title">Город</h2>
             <label class="search-form__label">
@@ -29,6 +31,7 @@
               />
             </label>
           </fieldset>
+          <!-- форма "Время суток" -->
           <fieldset class="search-form__fieldset">
             <h2 class="search-form__fieldset-title">Время суток</h2>
             <div class="search-form__checkbox-list">
@@ -64,11 +67,13 @@
               </label>
             </div>
           </fieldset>
+          <!-- кнопка "Найти" -->
           <button type="submit" class="button search-form__submit-button">
             Найти
           </button>
         </form>
       </section>
+      <!-- начало ПО-смотри в окно -->
       <section class="content__details">
         <h1 class="title">
           <span class="content__accent">По-</span><br />смотри<br />в окно
@@ -78,9 +83,7 @@
         </ul>
       </section>
     </main>
-
     <!-- ТЕМПЛЕЙТЫ -->
-
     <template class="preloader-template">
       <div class="preloader">
         <div class="preloader-chasing-squares">
@@ -91,7 +94,6 @@
         </div>
       </div>
     </template>
-
     <template class="cards-list-item-template">
       <li class="content__list-item">
         <a href="#0" class="content__card-link">
@@ -108,7 +110,6 @@
     <template class="more-button-template">
       <li><button class="button more-button">Показать еще</button></li>
     </template>
-
     <template class="error-template">
       <div class="error">
         <h2 class="error__title"></h2>
