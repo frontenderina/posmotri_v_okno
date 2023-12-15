@@ -52,7 +52,6 @@ ol {
 Время суток и кнопка Найти */
 .result {
   width: 711px;
-  min-height: 386px;
 }
 
 /* блок с большим экраном видео */
@@ -96,6 +95,9 @@ ol {
 /* лейбл полей Город, Утро, День, Ночь
 ! текстовые стили label не наследуются (цвет, шрифт и т.д.) */
 .search-form__label {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
   width: fit-content;
   color: inherit;
   font-family: inherit;
@@ -105,11 +107,13 @@ ol {
   line-height: inherit;
 }
 
-/* подчёркивание текста у чекбокса при наведении 
-курсора на лейбл */
+/* ИЗ ЗАДАНИЯ:
+"... подчёркивание должно появляться при наведении на любую 
+точку лейбла, а не только на сам текст" */
 .search-form__label:hover {
   text-decoration: underline;
   text-underline-offset: 3px;
+  cursor: pointer;
 }
 
 /* span Утро, День, Ночь */
@@ -135,9 +139,9 @@ ol {
 ! текстовые стили input не наследуются (цвет, шрифт и т.д.)*/
 .search-form__textfield {
   min-width: 225px;
-  border-top: 1px solid #FFF;
+  border-top: 1px solid currentColor;
   border-right: 0;
-  border-bottom: 1px solid #FFF;
+  border-bottom: 1px solid currentColor;
   border-left: 0;
   padding-right: 0;
   padding-left: 0;
@@ -182,10 +186,10 @@ ol {
   min-width: 212px;
 }
 
+/* ВАРИАНТ РАЗМЕЩЕНИЯ ЧЕК-БОКСОВ 1 */
 /* span Утро, День, Ночь */
 .search-form__pseudo-checkbox {
-  position: relative;
-  display: inline-block;
+  display: inline-flex;
   width: 19px;
   height: 19px;
   border: 1px solid #FFF;
@@ -193,13 +197,34 @@ ol {
 
 /* при клике в чекбоксе Утро, День, Ночь 
 появляется маркер в выбранном квадрате */
-.search-form__checkbox:checked + .search-form__pseudo-checkbox {
-  background-image: url(/images/checked.png);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::before {
+  content: "";
+  width: 13px;
+  height: 13px;
+  margin: auto;
+  background-color: #fff;
 }
 
+/* ВАРИАНТ РАЗМЕЩЕНИЯ ЧЕК-БОКСОВ 2, НО ОН С АБСОЛЮТОМ */
+/* span Утро, День, Ночь */
+/* .search-form__pseudo-checkbox {
+  position: relative;
+  display: inline-flex;
+  width: 19px;
+  height: 19px;
+  border: 1px solid #FFF;
+}  */
+
+/* при клике в чекбоксе Утро, День, Ночь 
+появляется маркер в выбранном квадрате */
+/* .search-form__checkbox:checked + .search-form__pseudo-checkbox::before {
+  position: absolute;
+  content: "";
+  width: 16px;
+  height: 16px;
+  inset: 1px;
+  background-color: #fff;
+} */
 
 /* кнопки Найти и Показать ещё */
 .button {
@@ -252,7 +277,6 @@ ol {
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  height: 534px;
 }
 
 /* заголовок h1 По- смотри в окно */
@@ -276,9 +300,9 @@ ol {
 /* контейнер для темплейтов карточек */
 .content__list {
   position: relative;
-  min-height: 236px;
+  height: 300px;
   padding-left: 30px;  
-  overflow-x: hidden;
+  overflow-x: auto;
   overflow-y: auto;
 }
 
@@ -287,33 +311,14 @@ ol {
   position: absolute;
 }
 
-/* ячейка карточки в фокусе */
-.content__list-item:focus {
-  outline: none;
-}
-
-/* ячейка карточки только при tab-клике */
-.content__list-item:focus-visible {
-  margin: 2px 2px 2px 2px;
-  outline: 1px solid #FFF;
-  outline-offset: 2px;
-}
-
-/* ячейка карточки при наведении курсора */
-.content__list-item:hover {
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-/* ячейка в момент клика-активации */
-.content__list-item:active {
-  background: #545050;
+.content__list-item {
+  margin-bottom: 30px;
 }
 
 /* убрала нижний отступ у последней 
 карточки в списке */
 .content__list-item:last-child {
-  margin-bottom: -30px;
+  margin-bottom: 0;
 }
 
 /* ссылка карточки */
@@ -324,21 +329,48 @@ ol {
   cursor: pointer;
 }
 
+/* ссылка карточки в фокусе */
+.content__card-link:focus {
+  outline: none;
+}
+
+/* ссылка карточки только при tab-клике */
+.content__card-link:focus-visible {
+  margin: 2px 2px 2px 2px;
+  outline: 1px solid #FFF;
+  outline-offset: 2px;
+}
+
+/* ссылка карточки при наведении курсора */
+.content__card-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ссылка в момент клика-активации */
+.content__card-link:active {
+  background: #545050;
+}
+
 /* секция видео-карточка */
 .content__video-card {
   display: flex;
   align-items: flex-start;
-  margin-bottom: 30px;
+  /* margin-top: 30px;*/
 }
 
 /* описание видео-карточки */
 .content__video-card-description-container {
+  max-width: 200px;
   padding: 0 2px 0 2px;
+  overflow: hidden; /* содержимое, выходящее за пределы «родительского» блока, обрезается по его границам без прокрутки */
+  text-overflow: ellipsis; /* к не поместившемуся тексту добавила многоточия */
+  /* 3 свойства ниже работают в команде */
+  white-space: nowrap; /* браузер перестаёт учитывать границы элемента и выводит весь текст в одну строку */
 }
 
 /* подзаголовок h2 видео-карточки */
 .content__video-card-title {
-  width: 200px;
   padding-top: 5px;
   color: #FFF;
   font-family: Oswald, sans-serif;
@@ -361,6 +393,8 @@ ol {
 /* картинка видео-карточки */
 .content__video-card-thumbnail {
   width: 194px;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* активная карточка выделена фоном */
