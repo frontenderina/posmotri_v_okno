@@ -1,0 +1,14 @@
+{
+  "editor.largeFileOptimizations": false,
+  "editor.renderLineHighlight": "line",
+  "editor.renderLineHighlightOnlyWhenFocus": true,
+  "editor.wordWrap": "on",
+  "editor.minimap.enabled": true,
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "ecsstractor_port.bem_nesting": false,
+  "workbench.editor.enablePreviewFromCodeNavigation": false,
+  "CSSNavigation.enableGoToDefinition": true,
+  "CSSNavigation.enableFindAllReferences": true,
+  "CSSNavigation.enableLogLevelMessage": true,
+  "CSSNavigation.searchAcrossWorkspaceFolders": false
+}

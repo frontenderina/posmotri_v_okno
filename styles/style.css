@@ -9,7 +9,6 @@ html {
 }
 
 .page {
-  /* мой код */
   display: flex;
   align-items: center;
   margin: auto;
@@ -98,7 +97,7 @@ ol {
   display: flex;
   align-items: center;
   column-gap: 5px;
-  width: fit-content;
+  width: fit-content; /* элемент считает ширину контейнера относительно контента внутри себя; сколько положили - такая и ширина*/
   color: inherit;
   font-family: inherit;
   font-weight: inherit;
